@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+  <test name="SortTests">
+    <groups>
+      <run>
+        <include name="sortTest"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="net.wehrens.intellij.plugins.*" />
+   </packages>
+ </test>
+
+  <test name="ConvertTests">
+    <groups>
+      <run>
+
+        <include name="convertTest"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="net.wehrens.intellij.plugins.*" />
+    </packages>
+  </test>
+</suite>

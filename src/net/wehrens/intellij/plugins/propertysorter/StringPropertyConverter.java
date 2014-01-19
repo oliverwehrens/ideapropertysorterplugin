@@ -4,7 +4,7 @@ import java.util.*;
 
 public class StringPropertyConverter {
 
-  public static final String ideaLineSeperator = "\n";
+  public static final String ideaLineSeparator = "\n";
   private final String COMMENTS_AT_THE_END = "";
 
   public Properties convertString(String stringToBeConverted) throws ConvertException {
@@ -22,7 +22,7 @@ public class StringPropertyConverter {
         result.put(key, value);
       }
       else if (!lineIsAComment(line) && !lineIsEmpty(line)) {
-        throw new ConvertException("This is does not look like a properties text.");
+        throw new ConvertException("This does not look like a properties text.");
       }
     }
 
@@ -34,14 +34,23 @@ public class StringPropertyConverter {
   }
 
   private String extractValue(String[] keyValuePair) {
-    StringBuffer value = new StringBuffer();
-    if (keyValuePair.length >= 2) {
-      value = value.append(keyValuePair[1].trim());
+    StringBuffer result = new StringBuffer();
+
+    if (keyValuePair.length >= 2) { // there could be more than one "=" in the line
+      String value = keyValuePair[1].trim();
+      // Hack for ResourceBundle: when the value begins with a space
+      // ResourceBundle writes key = \   value to the file
+      if (value.startsWith("\\ ")) { // starts with one space at least
+        value = value.substring(2).trim(); // will remove the rest of the spaces as well
+      }
+      result.append(value);
+
+      // append the rest of the "="s at the end
       for (int i = 2; i < keyValuePair.length; i++) {
-        value.append("=").append(keyValuePair[i]);
+        result.append("=").append(keyValuePair[i]);
       }
     }
-    return value.toString();
+    return result.toString();
   }
 
   private String extractKey(String[] keyValuePair) {
@@ -61,7 +70,7 @@ public class StringPropertyConverter {
 
     for (String key : orderedKeyList) {
       String value = properties.getProperty(key);
-      result.append(key).append("=").append(value).append(ideaLineSeperator);
+      result.append(key).append("=").append(value).append(ideaLineSeparator);
     }
 
     return result.toString();
@@ -78,7 +87,7 @@ public class StringPropertyConverter {
       if (commentsForProperties.containsKey(line)) {
         line = commentsForProperties.get(line)+line;
       }
-      result.append(line).append(ideaLineSeperator);
+      result.append(line).append(ideaLineSeparator);
     }
 
     if (commentsForProperties.containsKey(COMMENTS_AT_THE_END)) {
@@ -99,7 +108,7 @@ public class StringPropertyConverter {
         if (commentsForProperties.containsKey(nextPropertyLine)) {
           existingCommentsForThisProperty = commentsForProperties.get(nextPropertyLine);
         }
-        existingCommentsForThisProperty = existingCommentsForThisProperty+line+ideaLineSeperator;
+        existingCommentsForThisProperty = existingCommentsForThisProperty+line+ideaLineSeparator;
         commentsForProperties.put(nextPropertyLine, existingCommentsForThisProperty);
       }
     }

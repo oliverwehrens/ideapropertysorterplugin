@@ -19,10 +19,9 @@ public class SortPropertiesAction extends AnAction {
   private StringPropertyConverter stringPropertyConverter = new StringPropertyConverter();
 
   public void actionPerformed(AnActionEvent e) {
-
+    // todo: turn this into a sort all property files method
     final Editor editor = e.getData(DataKeys.EDITOR);
     final String fileText = e.getData(DataKeys.FILE_TEXT);
-
     MessageWindowComponent messageWindowComponent = getMessageComponent();
 
     if (fileText != null) {

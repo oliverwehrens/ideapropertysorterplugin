@@ -1,11 +1,14 @@
-<idea-plugin version="1" url="git@github.com:spygi/ideapropertysorterplugin.git">
+<idea-plugin url="git@github.com:spygi/ideapropertysorterplugin.git">
     <name>Property Sorter</name>
+    <vendor email="oliver.wehrens@gmail.com">Oliver Wehrens</vendor>
     <description><![CDATA[
     An extension of the Property Sorter plugin from Oliver Wehrens. Forked off git@github.com:oliverwehrens/ideapropertysorterplugin.git</p>
   ]]></description>
 
     <change-notes><![CDATA[
-    Version 0.1
+    Version 0.1 
+    Ported from google code
+   
     <ul>
       <li>Initial Release.</li>
     </ul>
@@ -17,7 +20,6 @@
     <idea-version since-build="8000"/>
 
     <application-components>
-        <!-- Add your application components here -->
         <component>
             <implementation-class>net.wehrens.intellij.plugins.propertysorter.MessageWindowComponent</implementation-class>
         </component>
@@ -28,7 +30,6 @@
     </project-components>
 
     <actions>
-        <!-- Add your actions here -->
         <action id="SortProperties2" class="net.wehrens.intellij.plugins.propertysorter.SortPropertiesAction" text="Sort properties">
             <add-to-group group-id="CodeMenu" anchor="after" relative-to-action="MoveStatementUp"/>
         </action>

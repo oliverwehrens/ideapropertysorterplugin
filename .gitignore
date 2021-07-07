@@ -2,3 +2,7 @@
 *.iml
 *.jar
 out/
+
+### Gradle ###
+.gradle
+build/

@@ -44,4 +44,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
     compile 'commons-beanutils:commons-beanutils:1.9.3'
     compile 'org.apache.commons:commons-configuration2:2.4'
+    
+    testImplementation 'org.testng:testng:6.8'
+
 }

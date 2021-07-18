@@ -6,6 +6,10 @@ import java.util.List;
 
 import net.wehrens.intellij.plugins.propertysorter.SortPropertiesResult;
 
+/**
+ * Table model which stores the results of sorting the properties files. There is one row per
+ * sorted properties file.
+ */
 public class SortPropertiesResultsTableModel extends AbstractTableModel {
   private static final String[] COLUMN_NAMES = {"File", "Success", "Message"};
   private List<SortPropertiesResult> propertySortResults;

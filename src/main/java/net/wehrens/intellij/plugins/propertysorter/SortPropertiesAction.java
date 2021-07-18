@@ -17,12 +17,19 @@ import com.intellij.openapi.vfs.VirtualFile;
 
 import net.wehrens.intellij.plugins.propertysorter.ui.SortPropertiesResultsPanel;
 
-
+/**
+ * Intellij plugin action used to sort multiple properties files.
+ */
 public class SortPropertiesAction extends AnAction {
 
   private PropertySorter propertySorter = new PropertySorter();
   private StringPropertyConverter stringPropertyConverter = new StringPropertyConverter();
 
+  /**
+   * Action  performed when user selects Code > Sort Properties
+   * 
+   * @param e the action event from which the list of files to sort and project information is extracted.
+   */
   public void actionPerformed(AnActionEvent e) {
     try {
       VirtualFile[] files = e.getData(DataKeys.VIRTUAL_FILE_ARRAY);

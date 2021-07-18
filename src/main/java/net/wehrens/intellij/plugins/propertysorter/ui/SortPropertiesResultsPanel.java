@@ -20,6 +20,10 @@ import net.wehrens.intellij.plugins.propertysorter.SortPropertiesResult;
 
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Panel that contains a table which shows the results of sorting the properties files. There is one row per
+ * sorted properties file.
+ */
 public class SortPropertiesResultsPanel extends DialogWrapper {
 
   private JPanel panel;

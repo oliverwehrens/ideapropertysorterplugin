@@ -2,6 +2,9 @@ package net.wehrens.intellij.plugins.propertysorter;
 
 import com.intellij.openapi.vfs.VirtualFile;
 
+/**
+ * Used to store the result of sorting one properties file.
+ */
 public class SortPropertiesResult {
   private VirtualFile virtualFile;
   private boolean success;
